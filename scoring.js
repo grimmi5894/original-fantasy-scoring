@@ -31,8 +31,14 @@ const calculateReceivingScore = (player) => {
     //6 points for every receiving touchdown, 
     //-3 points for every receiving fumble,
 const calculateReturnScore = (player) => {
-    player.stats.return.kickreturn = (yards /15) + (touchdowns *6) - (fumbles *3)
-    player.stats.return.puntreturn = (yards /15) + (touchdowns *6) - (fumbles *3)
+    const kickreturnyards = player.stats.return.kickreturn.yards / 15
+    const kickreturntouchdowns = player.stats.return.kickreturn.touchdowns * 6
+    const kickreturnfumbles = player.stats.return.kickreturn.fumbles * -3
+    const puntreturnyards = player.stats.return.puntreturn.yards / 15
+    const puntreturntouchdowns = player.stats.return.puntreturn.touchdowns * 6
+    const puntreturnfumbles = player.stats.return.puntreturn.fumbles * -3
+    
+    return kickreturnyards + kickreturntouchdowns + kickreturnfumbles + puntreturnyards + puntreturntouchdowns + puntreturnfumbles
 }
     //1 point for every 15 kick return yards, 
     //6 points for every kick return touchdown, 
